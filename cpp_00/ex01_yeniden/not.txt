@@ -1,0 +1,99 @@
+Set ve get fonsiyonları neden kullanılır ?
+this-> neden kullanılır ?
+this-> kullanılmasa sorun olur mu ne gibi sorun olur ?
+public nedir ? - prinvate nedir ?
+std::string nedir ?
+std::getline nasıl çalışır ?
+std::cin.eof nedir ve ne işe yarar ?
+buf.earse nedir ve niçin kullandın ?
+std::setw() ne dir ve ne için kullanılır ?
+Constracture nedir ? Destracture nedir ?
+isdigit nedir ? 
+lenght nedir ?
+push back nedir ?
+.substr nasıl çalışır. ?
+bool veri türü nasıl çalışır ?
+std::right << std::setw(45) << std::setfill('-') buradaki 3 fonsiyon nasıl çalışır ?
+atoi(string_no.c_str()); bu satırdaki ato ve c_str nasıl çalışır ?
+
+
+
+
+
+Set ve get fonsiyonları neden kullanılır:
+	Sınıfın private olarak tanımlanmış değişkenlere kontrollü bir erişim sağlamak için kullanılır.
+
+this-> neden kullanılır :
+	this pointer'ı, her sınıf örneği için otomatik olarak tanımlanan bir göstericidir ve o nesnenin kendisini işaret eder. Bu işaretçi üzerinden sınıf değişkenlerine ulaşabiliriz.
+
+this-> kullanılmasa sorun olur mu ne gibi sorun olur :
+	sınıf ve metod veya fonksiyon içerisindeki değişkenlerin isim benzerliği olması durumunda kullanılmadığı zaman beklenmeyen sonuçlar alınabilir.
+
+public nedir ? - prinvate nedir ? :
+	C++'da public ve private erişim belirleyicileri, bir sınıfın üyelerine (değişkenler ve fonksiyonlar) kimlerin erişebileceğini kontrol etmek için kullanılır. 
+	Erişim belirleyicileri, nesne yönelimli programlamanın temel prensiplerinden biri olan encapsulation (kapsülleme) sağlar
+	-> public erişim belirleyici ile tanımlanan üyeler, sınıfın dışından serbestçe erişilebilir.
+	-> private erişim belirleyici ile tanımlanan üyeler, yalnızca sınıfın kendi içinden erişilebilir.
+
+std::string nedir ?:
+	cpp de tanımlı bir sınıftır. c deki karakter dizinilerinin gelişmiş halidir.
+
+std::getline() nasıl çalışır ?
+	std::getline(input_stream, destination_string, delimiter);
+		-> input_stream: Giriş akışı (genellikle std::cin veya bir dosya akışı std::ifstream).
+		-> destination_string: Okunan satırın atanacağı std::string değişkeni.
+		-> delimiter (isteğe bağlı): Okumanın duracağı karakter. Varsayılan olarak '\n' (yeni satır karakteri) kullanılır.
+
+std::cin.eof nedir ve ne işe yarar ?
+	dosta sonuna gelip gelinmediğini kontrol eder ve true yada false döner. elimiz ile ctrl + d girdiğizde dosya sonu sinyali göndermiş oluruz ve true ile 
+	döngü sonlandırma gibi işlemler yaplabilir.
+
+buf.earse nedir ve niçin kullandın ?
+	buradaki buf std::string türünden bir nesnedir. std::stirng türünde bir nesne üzerinden ulaşılan earse string nesnesinin belirli kısımlarını silmek için kullanılır.
+	çeşitli kullanımları var: x.earse(3 5), 3-5 arası şeyleri sili x.earse(5), 5 ten sonraki her şeyi sil, bu iki kullanım kullanılmıştır.
+
+std::setw() ne dir ve ne için kullanılır ?
+	setw -> set witdh -> C++ dilinde, iomanip kütüphanesi içinde bulunan ve çıktıların ekranda belirli bir genişlikte (width) hizalanmasını sağlamak için kullanılan bir işlevdir.
+			Bu işlev, özellikle tablo yapısında verileri hizalama ve düzenli çıktı üretme işlemlerinde kullanışlıdır.
+
+	"constructor" (yapıcı) ve "destructor" (yıkıcı) terimleri, bir sınıfın nesneleri oluşturulurken ve yok edilirken otomatik olarak çağrılan özel üye fonksiyonları ifade eder. 
+	Bu fonksiyonlar, nesne yaşam döngüsünün yönetilmesinde önemli bir rol oynar.
+
+	Constructor (Yapıcı)
+		->Tanım: Bir sınıfın nesnesi oluşturulurken çağrılan özel bir fonksiyondur. Constructor, nesne oluşturulduğunda ilk değerlerin atanması ve gerekli başlangıç işlemlerinin yapılması için kullanılır.
+		->Adlandırma: Constructor, sınıf adıyla aynı isme sahiptir ve geri dönüş değeri yoktur.
+		->Aşırı Yükleme: Birden fazla constructor tanımlanabilir (constructor overloading), böylece nesne farklı durumlarda oluşturulabilir.
+		->Kullanım: Genellikle sınıf üyelerinin başlangıç değerleri atanırken, kaynakların tahsisi gibi işlemler gerçekleştirilir.
+
+	Destructor (Yıkıcı)
+		->Tanım: Bir nesne yok edilirken otomatik olarak çağrılan özel bir fonksiyondur. Destructor, nesne yok edilirken bellekten kaynakların serbest bırakılması ve temizleme işlemlerinin yapılması için kullanılır.
+		->Adlandırma: Destructor, sınıf adı ile aynı isme sahiptir, ancak başında ~ (tilde) sembolü bulunur. Geri dönüş değeri yoktur ve parametre almaz.
+		->Kullanım: Dinamik bellek tahsisi yapılmışsa, bu belleğin serbest bırakılması gibi işlemler gerçekleştirilir.
+
+	<- İkisi de nesne yaşam döngüsünün yönetiminde kritik öneme sahiptir ve kaynak sızıntılarını önlemek için dikkatli kullanılmalıdır. ->
+
+isdigit nedir ? :
+	isdigit() fonksiyonu, C ve C++ programlama dillerinde, bir karakterin (char) bir rakam olup olmadığını kontrol etmek için kullanılan standart bir fonksiyondur. 
+
+push back nedir ?
+	push_back() metodu çağrıldığında, belirtilen karakter stringin sonuna eklenir. Eğer mevcut bellek yetersizse, std::string sınıfı yeni bellek tahsis eder ve tüm karakterleri (eski ve yeni) yeni konuma kopyalar.
+	Bu işlem, stringin boyutunu artırır ve stringin sonuna yeni karakteri ekler.
+
+.substr nasıl çalışır. ?
+	std::string::substr() metodu, C++ dilinde std::string sınıfına ait bir fonksiyondur ve bir stringin belirli bir alt dizesini (substring) almak için kullanılır. 
+	Bu metod, orijinal stringin belirli bir bölümünü seçip yeni bir string olarak döndürür.
+
+bool veri türü nasıl çalışır ?
+	İki Değer: bool değişkenleri yalnızca true veya false değerlerini alabilir.
+
+std::right << std::setw(45) << std::setfill('-') buradaki 3 fonsiyon nasıl çalışır ?
+	std::right
+		Tanım: std::right, çıktının hizalanma biçimini belirtir. Bu durumda, verilerin sağa hizalanmasını sağlar.
+	std::setw(int n)
+		Tanım: std::setw() fonksiyonu, bir sonraki çıktının genişliğini ayarlamak için kullanılır. n parametresi, alanın kaç karakter genişliğinde olacağını belirler.
+	std::setfill(char c)
+		Tanım: std::setfill() fonksiyonu, std::setw() ile birlikte kullanıldığında, belirtilen karakterin çıktının boş alanlarını doldurmak 
+		için kullanılmasını sağlar. c parametresi, doldurulacak karakteri belirtir.
+
+.c_str nasıl çalışır ?
+	std::string sınıfının c_str() metodu, bir C++ std::string nesnesinin içeriğini bir C tarzı karakter dizisi (null-terminated string) olarak döndürmek için kullanılır. 

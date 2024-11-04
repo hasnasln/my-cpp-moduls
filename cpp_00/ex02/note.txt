@@ -1,0 +1,18 @@
+fonsiyonlarda static neyi ifade eder ?
+private bir değişkenin static olması ne demektir ?
+yapıcı bir fonsiyonun private olarak tanımlanması ne ifade eder ?
+fonksiyon tanımından sonra gelen const ne ifade eder ?
+cpp de vektörler nedir ?
+cpp de pair nedir ?
+iteratör nedir ?
+std::for_each nasıl çalışır ?
+
+fonsiyonlarda static neyi ifade eder ?
+	Yerel Statik Değişkenler: Fonksiyon çağrıları arasında değeri korur.
+	Global Statik Değişkenler: Sadece tanımlandığı dosya içinde erişilebilir.
+	Sınıf Üyesi Statik Değişkenler: Tüm nesneler arasında paylaşılır, sadece sınıf adı ile erişilir.
+
+ Statik üye fonksiyonlarının yalnızca statik veri üyelerine veya diğer statik üye fonksiyonlarına erişmesine izin verilir , 
+ sınıfın statik olmayan veri üyelerine veya üye fonksiyonlarına erişemezler. 
+
+
