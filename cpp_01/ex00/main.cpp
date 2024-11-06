@@ -12,3 +12,6 @@ int main(void)
 	delete zombie;
 	return (0);
 }
+
+
+

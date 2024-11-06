@@ -2,26 +2,22 @@
 
 
 void Harl::debug( void ){
-	std::cout << "7XL-çift peynirli-üçlü turşu-özel-ketçaplı burgerime fazladan domuz pastır-" <<
-	"ması yemeyi seviyorum. Gerçekten seviyorum!" << std::endl;
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
 }
 void Harl::info( void ){
-	std::cout <<  "Ekstra domuz pastırması eklemenin daha fazla paraya mal olduğuna inanamıy-" <<
-		"orum. Burgerime yeterince pastırma koymadınız! Yapsaydınız, daha fazlasını iste-"<<
-		"mezdim!" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put " <<
+		"enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 }
 void Harl::warning( void ){
-	std::cout << "Bence bedavaya fazladan pastırma yemeyi hak ediyorum. Ben yıllardır"<<
-			"geliyorum, sen geçen aydan beri burada çalışmaya başladın." << std::endl;
+	std::cout <<	"I think I deserve to have some extra bacon for free. I’ve been coming for "<<
+					"years whereas you started working here since last month." << std::endl;
 }
 void Harl::error( void ){
-	std::cout << "Bu kabul edilemez! Şimdi müdürle konuşmak istiyorum." << std::endl;
+	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
 void	Harl::complain(std::string level)
 {
-	// typedef void (Harl::*y)();    -> y adında bir fonsiyon işaretcisi oluşturdum bunun üzerinden de kullanılabilir 
-
 	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*fonctions[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
@@ -34,6 +30,6 @@ void	Harl::complain(std::string level)
 			return;
 		}
 	}
-	std::cout << "Tanimsiz bir girdi" << std::endl;
+	std::cout << "Undefined input" << std::endl;
 }
 

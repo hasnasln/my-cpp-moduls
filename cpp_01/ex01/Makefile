@@ -10,7 +10,9 @@ OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-
+%.o : %.cpp
+	$(FLAGS) -c $< -o $@
+	
 $(NAME):$(OBJ)
 	$(FLAGS) $(OBJ) -o $(NAME)
 

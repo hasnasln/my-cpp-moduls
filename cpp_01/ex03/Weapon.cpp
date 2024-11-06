@@ -12,4 +12,6 @@ const std::string&  Weapon::getType(void) const
 Weapon::Weapon(std::string type): _tpye(type)
 {
 }
-Weapon::~Weapon(){}
+Weapon::~Weapon()
+{
+}

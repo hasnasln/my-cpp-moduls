@@ -4,6 +4,12 @@
 #include <iostream>
 #include "Weapon.hpp"
 
+/*
+sınıf üyesi olarak tanımlanana referaslar sınıfın yapıcı fonksiyonunda başlatılmalıdır.
+aksi takride derleyici hata verir.
+Bu yüzden constructor da başlatma listesi kullanılarak referanslar başlatılmalıdır.
+Diğer türlü nesne oluşmuş sonra değer ataması yapılmış oluyor.
+*/
 class HumanA
 {
 	public:

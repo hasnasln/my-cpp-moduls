@@ -47,6 +47,8 @@ int main(int argc, char **argv)
 				break;
 			}
 		}
+		return (0);
 	}
+	std::cout << "Usage:[DEBUG|INFO|WARNING|ERROR]" << std::endl;
 	return (0);
 }
