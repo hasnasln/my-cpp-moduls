@@ -1,0 +1,20 @@
+copy constracture nedir ? 
+operatör aşırı yükleme nasıl yapılır ?
+deep copy ve shalow copy nedir ?
+
+deep copy ve shalow copy nedir ?:
+Shallow Copy ve Deep Copy
+Shallow Copy (Yüzeysel Kopyalama): Sadece üye değişkenlerin değerlerini kopyalar. Eğer bir nesnenin dinamik bellek yönetimi varsa, her iki nesne de aynı bellek alanını paylaşır.
+Deep Copy (Derin Kopyalama): Nesnenin her üyesi için kopyalar oluşturur. Bu, özellikle dinamik bellek kullanımında gereklidir çünkü her nesne kendi belleğini ayrı olarak yönetir.
+
+
+Kopyalama ve Atama Arasındaki Fark
+Copy Constructor: Bir nesne oluşturulurken bir başka nesneye kopyalanarak başlatılmasını sağlar.
+Assignment Operator (Atama Operatörü): Bir nesne zaten var olduğunda başka bir nesneye kopyalanmasını sağlar.
+
+
+Polimorfizm (çok biçimlilik), nesne yönelimli programlamanın (OOP) temel
+ özelliklerinden biridir ve bir nesnenin birden çok farklı türde davranış
+  sergileyebilmesini sağlar. Polimorfizm, temelde aynı fonksiyon, metod veya 
+  operatörün farklı türlerdeki nesnelerde farklı işler yapmasını ifade eder.
+   Bu özellik, yazılımın daha esnek ve genişletilebilir olmasını sağlar.
