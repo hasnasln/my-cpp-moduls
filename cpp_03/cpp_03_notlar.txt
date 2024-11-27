@@ -1,0 +1,141 @@
+Derived d;
+    Base* b = &d;
+
+burada iki farklı nesne tanımlıyoruz ama birbirine atama yapabiliyoruz bunun temel nedenini çok detaylıca anlatırmısın
+ChatGPT:
+ChatGPT
+Evet, bu durum C++'ta türetilmiş sınıfların temel sınıf işaretçisine veya referansına atanabilmesi prensibinden kaynaklanır ve bu prensip Liskov Substitution Principle (LSP) ile ilgilidir. Şimdi bunu detaylıca açıklayalım:
+
+1. Türetilmiş Sınıf ve Temel Sınıf Arasındaki İlişki
+Bir sınıf başka bir sınıftan türetildiğinde, türetilmiş sınıf, temel sınıfın tüm public ve protected üyelerini miras alır. Bu şu anlama gelir:
+
+Türetilmiş sınıf, temel sınıfın bir özel durumu gibidir.
+Türetilmiş sınıf, temel sınıfın bir türü olarak kabul edilir.
+Bu yüzden bir türetilmiş sınıf nesnesi, temel sınıfın işaretçisi (Base*) veya referansı (Base&) tarafından gösterilebilir.
+
+Örnek:
+cpp
+Kodu kopyala
+class Base {
+public:
+    void display() {
+        std::cout << "Base function" << std::endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display() {
+        std::cout << "Derived function" << std::endl;
+    }
+};
+
+int main() {
+    Derived d;
+    Base* b = &d; // Türetilmiş sınıfın adresi temel sınıf işaretçisine atanabilir.
+    b->display(); // Base'in display() fonksiyonu çağrılır (polimorfizm yoksa).
+}
+Burada Derived d; ifadesi ile türetilmiş sınıfın bir nesnesi oluşturulur. Ancak Base* b = &d; ifadesi, türetilmiş sınıfın bir temel sınıf gibi davranabilmesini sağlar. Bu, temel sınıfın "kapsayıcı" (generic) olmasından kaynaklanır.
+
+2. Neden Mümkün?
+a) "IS-A" İlişkisi
+Türetilmiş sınıf her zaman temel sınıfın bir türü olarak kabul edilir. Buna IS-A ilişkisi denir. Örneğin:
+
+Eğer Car sınıfı Vehicle sınıfından türetilmişse, bir araba (Car) bir araçtır (Vehicle).
+Dolayısıyla türetilmiş sınıfın bir nesnesi (örneğin, Derived), temel sınıfın bir nesnesi gibi davranabilir (örneğin, Base* işaretçisi).
+
+b) Bellek Düzeni
+Türetilmiş sınıf, temel sınıfın üyelerini içerdiği için, türetilmiş bir nesnenin bellek düzeni, temel sınıf nesnesinin bellek düzenine sahiptir. Yani:
+
+Türetilmiş sınıfın içinde temel sınıfın bir kopyası bulunur.
+Temel sınıf işaretçisi veya referansı, türetilmiş nesnenin temel sınıf kısmını görebilir.
+Örneğin:
+
+cpp
+Kodu kopyala
+class Base {
+public:
+    int a;
+};
+
+class Derived : public Base {
+public:
+    int b;
+};
+
+int main() {
+    Derived d;
+    Base* b = &d;
+
+    b->a = 10; // Temel sınıfın kısmına erişim.
+    // b->b = 20; // Hata: Temel sınıf işaretçisi türetilmiş sınıfın üyelerini göremez.
+}
+Base* işaretçisi yalnızca Base sınıfının üyelerine erişebilir, çünkü işaretçi temel sınıf perspektifindedir.
+
+3. Statik Tür ve Dinamik Tür
+C++'ta bir nesnenin statik türü (derleme zamanında belirlenen tür) ve dinamik türü (çalışma zamanında belirlenen tür) olabilir:
+
+Statik tür: Değişkenin bildirilirken kullanılan türdür.
+Dinamik tür: Değişkenin işaret ettiği gerçek nesnenin türüdür.
+cpp
+Kodu kopyala
+Derived d; 
+Base* b = &d;
+b işaretçisinin statik türü Base*'dir.
+b işaretçisinin dinamik türü Derived'dir.
+Eğer temel sınıftaki fonksiyon sanal (virtual) değilse, çağrılar statik türe göre yapılır. Eğer sanal bir fonksiyon varsa, çağrılar dinamik türe göre yapılır.
+
+4. Polimorfizm (Çok Biçimlilik)
+Temel sınıf işaretçisi veya referansı üzerinden türetilmiş sınıfın sanal fonksiyonlarını çağırabilmek polimorfizmin temelidir. Bu, virtual fonksiyonlar sayesinde gerçekleşir.
+
+cpp
+Kodu kopyala
+class Base {
+public:
+    virtual void display() {
+        std::cout << "Base::display()" << std::endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display() override {
+        std::cout << "Derived::display()" << std::endl;
+    }
+};
+
+int main() {
+    Derived d;
+    Base* b = &d;
+
+    b->display(); // Derived::display() çağrılır, çünkü display() virtual.
+}
+5. Liskov Substitution Principle (LSP)
+Liskov’un Yerine Geçme İlkesi der ki:
+
+Eğer S sınıfı T sınıfının bir alt sınıfıysa, T türünden bir nesne beklenen her yerde S türünden bir nesne kullanılabilir.
+
+Bu prensip, türetilmiş sınıf nesnesinin temel sınıf işaretçisine atanabilirliğini destekler.
+
+6. Özet
+Temel sınıf işaretçisine türetilmiş sınıf nesnesi atanabilir, çünkü türetilmiş sınıf temel sınıfın bir alt türüdür.
+Bu, türetilmiş sınıfın temel sınıftan tüm public/protected üyeleri miras alması ve IS-A ilişkisini sağlaması ile mümkün olur.
+Bellek düzeni ve sanal fonksiyonlar, türetilmiş sınıfın temel sınıf işaretçisine atanmasını etkiler.
+Polimorfizm (virtual fonksiyonlar) sayesinde, dinamik tür temel alınarak doğru fonksiyon çağrılabilir.
+
+Kalıtım türleri nelerdir ?
+1. Genel (public) Kalıtım
+    -Temel sınıf, taban sınıfın tüm public üyelerini public olarak, protected üyelerini
+    is protected olarak devralır.
+    -privete üyeler devralınır ancak türeyen sınıftan erişilemez
+    -Taban sınıfın kullanıcaya açık bir arabirimini genişletmek için kullanılır.
+2. Korunan (protected) Kalıtım
+    -Türeyen sınıfın, taban sınıfın tüm public ve protektin üyeleri protected olarak devralınır.
+    -Private üyeler yine devralınır ama türeyen sınıftan erişilemez
+    -Taban sınıf üyeleri yanlızca türeyen sınıf veya türeyen sınıfın alt sınıflarının
+    erişmesi gerektiği durumlarda kullanılır.
+3. Özel (Private) Kalıtım
+    -Türeyen sınıf, taban sınıfın tüm public ve protected üyelerini private olarak devralır.
+    -Private üyeler devralınır ama erişilemez.
+    -Taban sınıfın arabirimini tamamen gizlemek, yanlızca türeyen sınıf içinde kullanılmasını sağlamak
+    için kullanılır.

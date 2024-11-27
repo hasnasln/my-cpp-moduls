@@ -1,0 +1,162 @@
+1. Subtype Polymorphism (Alt Tür Polimorfizmi)
+Polimorfizm, bir nesnenin farklı şekillerde davranabilme yeteneğidir. Alt tür polimorfizmi, bir nesnenin daha genel bir türü üzerinden alt türlerinin nesnelerine erişim sağlamasına olanak tanır. Bu, genellikle kalıtım ve geçersiz kılma (overriding) ile birlikte kullanılır.
+
+Alt tür polimorfizmi, bir temel sınıf (superclass) türündeki bir işlevi, o sınıfın türetilmiş sınıf (subclass) nesneleriyle kullanmanıza olanak tanır. Bu, temel sınıfın bir türü olan bir nesnenin, o sınıfın alt sınıflarına ait metodları çalıştırabilmesini sağlar.
+
+Örnek:
+
+cpp
+Kodu kopyala
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void speak() {
+        cout << "Animal makes a sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void speak() override {
+        cout << "Woof!" << endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void speak() override {
+        cout << "Meow!" << endl;
+    }
+};
+
+int main() {
+    Animal* animal1 = new Dog();
+    Animal* animal2 = new Cat();
+
+    animal1->speak(); // Woof!
+    animal2->speak(); // Meow!
+
+    delete animal1;
+    delete animal2;
+    return 0;
+}
+Burada, Animal sınıfı bir temel sınıf olup, speak() fonksiyonu sanal (virtual) olarak tanımlanmıştır. Dog ve Cat sınıfları, Animal sınıfından türetilmiştir ve speak() fonksiyonunu geçersiz kılmıştır. Polimorfizm sayesinde, Animal* türündeki bir işaretçi ile farklı alt sınıf nesneleri üzerinde çalışılabiliyor.
+
+2. Abstract Classes (Soyut Sınıflar)
+Soyut sınıf, doğrudan nesne oluşturulamayacak bir sınıftır. Soyut sınıflar, yalnızca alt sınıflar tarafından genişletilmek üzere tasarlanır. Soyut sınıflar, soyut metodlar içerirler; bu metodlar alt sınıflarda geçersiz kılınmalıdır.
+
+Özellikler:
+
+Soyut sınıflar, bir veya daha fazla soyut metot içerebilir.
+Soyut metotlar, yalnızca imza içerir, gövdesi olmaz ve alt sınıflar tarafından geçersiz kılınmalıdır.
+Örnek:
+
+cpp
+Kodu kopyala
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual void draw() = 0;  // Soyut metod
+    virtual double area() = 0; // Soyut metod
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+public:
+    Circle(double r) : radius(r) {}
+    void draw() override {
+        cout << "Drawing a circle" << endl;
+    }
+    double area() override {
+        return 3.14 * radius * radius;
+    }
+};
+
+class Square : public Shape {
+private:
+    double side;
+public:
+    Square(double s) : side(s) {}
+    void draw() override {
+        cout << "Drawing a square" << endl;
+    }
+    double area() override {
+        return side * side;
+    }
+};
+
+int main() {
+    Shape* shape1 = new Circle(5);
+    Shape* shape2 = new Square(4);
+
+    shape1->draw();  // Drawing a circle
+    cout << "Area of Circle: " << shape1->area() << endl;
+
+    shape2->draw();  // Drawing a square
+    cout << "Area of Square: " << shape2->area() << endl;
+
+    delete shape1;
+    delete shape2;
+    return 0;
+}
+Bu örnekte, Shape sınıfı soyut bir sınıftır ve hem draw() hem de area() metodları soyuttur. Bu metodlar, her alt sınıfta (örneğin, Circle ve Square) geçersiz kılınmıştır.
+
+3. Interfaces (Arayüzler)
+Arayüz (Interface), yalnızca metod bildirimleri (imzaları) içerir ve hiçbir implementasyonu (gövdesi) yoktur. C++ dilinde doğrudan arayüz kavramı yoktur, ancak soyut sınıflar arayüz gibi kullanılabilir. Arayüzler, sınıflar arasında ortak bir davranış sözleşmesi oluşturur.
+
+Özellikler:
+
+Bir arayüz, yalnızca saf sanal metodlardan (pure virtual methods) oluşur.
+Arayüzler, yalnızca sınıfların uygulaması gereken bir şablon görevi görür.
+Örnek:
+
+cpp
+Kodu kopyala
+#include <iostream>
+using namespace std;
+
+class Drawable {
+public:
+    virtual void draw() = 0;  // Arayüz metodu
+};
+
+class Rectangle : public Drawable {
+public:
+    void draw() override {
+        cout << "Drawing a rectangle" << endl;
+    }
+};
+
+class Triangle : public Drawable {
+public:
+    void draw() override {
+        cout << "Drawing a triangle" << endl;
+    }
+};
+
+int main() {
+    Drawable* shapes[2];
+    shapes[0] = new Rectangle();
+    shapes[1] = new Triangle();
+
+    for (int i = 0; i < 2; ++i) {
+        shapes[i]->draw();
+    }
+
+    delete shapes[0];
+    delete shapes[1];
+
+    return 0;
+}
+Burada, Drawable bir arayüzdür. Rectangle ve Triangle sınıfları bu arayüzü implement eder ve draw() metodunu geçersiz kılar.
+
+Özet:
+Alt tür polimorfizmi: Bir temel sınıfın işlevlerini, alt sınıflarda geçersiz kılınarak farklı şekillerde kullanabilme yeteneğidir.
+Soyut sınıflar: Nesne oluşturulamayacak sınıflardır ve soyut metotlar içerir.
+Arayüzler: Bir sınıfın hangi metodları implement etmesi gerektiğini belirten yalnızca metod bildirimlerinden oluşan sınıflardır (C++'ta soyut sınıflarla temsil edilir).
+Her üç kavram, nesne yönelimli programlamada (OOP) esneklik, yeniden kullanılabilirlik ve genişletilebilirlik sağlamak için temel araçlardır.

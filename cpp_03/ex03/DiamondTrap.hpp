@@ -2,9 +2,10 @@
 # define DIAMOND_HPP
 
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
-class DiamondTrap: virtual public FragTrap, virtual public ClapTrap
+class DiamondTrap: public FragTrap, public ScavTrap
 {
 	public:
 		DiamondTrap(void);
@@ -13,11 +14,9 @@ class DiamondTrap: virtual public FragTrap, virtual public ClapTrap
 		DiamondTrap(const DiamondTrap &other);
 		DiamondTrap operator=(const DiamondTrap &other);
 
-		void vhoAmI();
+		void whoAmI();
 	private:
 		std::string _name;
-
 };
-
 
 #endif
