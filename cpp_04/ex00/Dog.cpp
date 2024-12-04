@@ -2,7 +2,7 @@
 
 Dog::Dog(): Animal()
 {
-	this->setType("Dog");
+	type = "Dog";
 	std::cout << YELLOW << "Dog default constructre called" << RESET << std::endl;
 }
 Dog::~Dog()
@@ -26,7 +26,6 @@ Dog Dog::operator=(const Dog &other)
 	std::cout << YELLOW << "Dog assignment operator called" << RESET << std::endl;
 	return *this;
 }
-
 void Dog::makeSound() const
 {
 	std::cout << YELLOW << "AVUUUUUU !!" << RESET << std::endl;

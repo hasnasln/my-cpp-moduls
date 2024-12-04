@@ -2,7 +2,7 @@
 
 WrongCat::WrongCat(): WrongAnimal()
 {
-	this->setType("WrongCat");
+	type = "WrongCat";
 	std::cout << BLUE << "WrongCat default constructre called" << RESET << std::endl;
 }
 WrongCat::~WrongCat()

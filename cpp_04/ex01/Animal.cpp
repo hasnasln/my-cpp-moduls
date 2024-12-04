@@ -20,12 +20,11 @@ Animal Animal::operator=(const Animal &other)
 {
 	if (this != &other)
 	{
-		this->setType(other.getType());
+		type = other.type;
 	}
 	std::cout << RED << "Animal assignment operator called" << RESET << std::endl;
 	return *this;
 }
-
 std::string Animal::getType(void) const
 {
 	return this->type;

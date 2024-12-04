@@ -13,7 +13,7 @@ class Animal
 {
 	public:
 		Animal();
-		~Animal();
+		virtual ~Animal();
 		Animal(const std::string type);
 		Animal(const Animal &other);
 		Animal operator=(const Animal &other);
@@ -22,7 +22,7 @@ class Animal
 		void setType(const std::string tpye);
 		
 		virtual void makeSound() const;
-	private:
+	protected:
 		std::string type;
 };
 

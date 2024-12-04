@@ -5,7 +5,7 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog: public Animal
+class Dog: public AAnimal
 {
 	public:
 		Dog();
@@ -13,6 +13,7 @@ class Dog: public Animal
 		Dog(const std::string type);
 		Dog(const Dog &other);
 		Dog operator=(const Dog &other);
+		
 		void makeSound() const;
 		void print_adress() const;
 	private:

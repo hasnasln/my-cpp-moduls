@@ -9,13 +9,11 @@ int main()
 
 	Dog i;
 	Cat j;
-	Cat cat(j);
 	Dog k(i);
 
 	i.makeSound(); //will output the cat sound!
 	j.makeSound();
 	j.print_adress();
-	cat.print_adress();
 
 	// delete j;//should not create a leak
 	// delete i;

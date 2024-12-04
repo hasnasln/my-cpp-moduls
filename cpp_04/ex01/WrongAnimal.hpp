@@ -22,7 +22,7 @@ class WrongAnimal
 		void setType(const std::string tpye);
 		
 		void makeSound() const;
-	private:
+	protected:
 		std::string type;
 };
 

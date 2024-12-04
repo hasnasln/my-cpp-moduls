@@ -20,7 +20,7 @@ WrongAnimal WrongAnimal::operator=(const WrongAnimal &other)
 {
 	if (this != &other)
 	{
-		this->setType(other.getType());
+		this->type = other.type;
 	}
 	std::cout << RED << "WrongAnimal assignment operator called" << RESET << std::endl;
 	return *this;

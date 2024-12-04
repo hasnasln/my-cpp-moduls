@@ -9,19 +9,19 @@
 #define BLUE	"\033[34m"
 #define RESET	"\033[0m"
 
-class Animal
+class AAnimal
 {
 	public:
-		Animal();
-		virtual ~Animal();
-		Animal(const std::string type);
-		Animal(const Animal &other);
-		Animal operator=(const Animal &other);
+		AAnimal();
+		virtual ~AAnimal();
+		AAnimal(const std::string type);
+		AAnimal(const AAnimal &other);
+		void operator=(const AAnimal &other);
 
 		std::string getType(void) const;
 		void setType(const std::string tpye);
-		
-		virtual void makeSound() const;
+		virtual void makeSound() const = 0;
+
 	protected:
 		std::string type;
 };

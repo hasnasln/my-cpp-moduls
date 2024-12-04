@@ -1,0 +1,3 @@
+bir fonsiyonun virtual olması kalıtım alınan sınıftaki aynı isimli fonsiyona ne sağlar ?
+deep kopy nedir ? shallow kopy nedir ?
+Abstract class nedir ?
