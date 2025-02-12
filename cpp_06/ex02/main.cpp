@@ -22,11 +22,11 @@ Base *generate(void)
 
 void identify(Base* p)
 {
-	if (dynamic_cast<A*>(p))
+	if (dynamic_cast<A*>(p) != NULL)
 		std::cout << "A" << std::endl;
-	else if (dynamic_cast<B*>(p))
+	else if (dynamic_cast<B*>(p) != NULL)
 		std::cout << "B" << std::endl;
-	else if (dynamic_cast<C*>(p))
+	else if (dynamic_cast<C*>(p) != NULL)
 		std::cout << "C" << std::endl;
 }
 
@@ -67,5 +67,6 @@ int main(void)
 	Base *base = generate();
 	identify(base);
 	identify(*base);
+	delete base;
 	return 0;
 }

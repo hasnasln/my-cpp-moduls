@@ -1,4 +1,6 @@
 #include "ScalarConverter.hpp"
+#include <cstdlib>
+#include <iomanip>
 
 ScalarConverter::ScalarConverter()
 {
@@ -34,8 +36,8 @@ void charConverter(const std::string &input)
 	char c = input[0];
 	charPrint(c);
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(3) << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(3) << static_cast<double>(c) << std::endl;
 }
 
 void intConverter(const std::string &input)
@@ -44,28 +46,28 @@ void intConverter(const std::string &input)
 
 	charPrint(i);
 	std::cout << "Int: " << i << std::endl;
-	std::cout << "Float: " << static_cast<float>(i) << std::endl;
-	std::cout << "Double: " << static_cast<double>(i) << std::endl;
+	std::cout << "Float: " << std::fixed << std::setprecision(3) << static_cast<float>(i) << "f" << std::endl;
+	std::cout << "Double: " << std::fixed << std::setprecision(3) << static_cast<double>(i) << std::endl;
 }
 
 void floatConverter(const std::string &input)
 {
-	int i = atof(input.c_str());
+	float i = atof(input.c_str());
 
 	charPrint(i);
 	std::cout << "Int: " << static_cast<int>(i) << std::endl;
-	std::cout << "Float: " << i << std::endl;
-	std::cout << "Double: " << static_cast<double>(i) << std::endl;
+	std::cout << "Float: " << std::fixed << std::setprecision(3) << i << "f" << std::endl;
+	std::cout << "Double: " << std::fixed << std::setprecision(3) << static_cast<double>(i) << std::endl;
 }
 
 void doubleConverter(const std::string &input)
 {
-	int i = atof(input.c_str());
+	double i = atof(input.c_str());
 
 	charPrint(i);
 	std::cout << "Int: " << static_cast<int>(i) << std::endl;
-	std::cout << "Float: " << std::fixed << static_cast<float>(i) << std::endl;
-	std::cout << "Double: " << i << std::endl;
+	std::cout << "Float: " << std::fixed << std::setprecision(3) << static_cast<float>(i) << "f" << std::endl;
+	std::cout << "Double: " << std::fixed << std::setprecision(3) << i << std::endl;
 }
 
 void PseudoLiteralConvertor(const std::string &input)
@@ -108,5 +110,5 @@ void ScalarConverter::convert(const std::string &input)
 	else if (type == PsoidoL)
 		PseudoLiteralConvertor(input);
 	else 
-		std::cout << "This is unknow type :D" << std::endl;
+		std::cout << "This is unknow type." << std::endl;
 }

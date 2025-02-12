@@ -1,10 +1,8 @@
-NAME = Serializer
+NAME = wathaver
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC =	main.cpp \
-		Data.cpp \
-		Serializer.cpp \
-
+		
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

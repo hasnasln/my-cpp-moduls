@@ -3,7 +3,6 @@
 #include "Data.hpp"
 #include <stdint.h>
 
-// c98 standartı silindi
 
 int main()
 {

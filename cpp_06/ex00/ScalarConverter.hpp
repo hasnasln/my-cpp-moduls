@@ -2,9 +2,6 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
-#include <string>
-#include <limits>
-#include <cmath>
 
 enum Type{
 	UNKNOW, CHAR, INT, FLOAT, DOUBLE, PsoidoL

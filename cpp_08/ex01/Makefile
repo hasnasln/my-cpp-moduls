@@ -1,9 +1,8 @@
-NAME = Serializer
+NAME = easyfind
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC =	main.cpp \
-		Data.cpp \
-		Serializer.cpp \
+		Span.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
