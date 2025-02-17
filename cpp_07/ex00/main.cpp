@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "whatever.hpp"
 
 
@@ -16,6 +17,15 @@ int main( void )
 	std::cout << "c = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+
+	std::string hasa = "hasan";
+	std::string huso = "huso";
+	::swap(hasa, huso);
+	std::cout << hasa << " - " << huso << std::endl;
+	std::cout << ::min(hasa, huso) << std::endl;
+	std::cout << ::max(hasa, huso) << std::endl;
+
+
 	return 0;
 }
 

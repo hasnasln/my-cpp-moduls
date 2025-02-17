@@ -10,6 +10,7 @@ int main()
 	std::vector<int> ali;
 	std::list<int> ali2;
 	std::deque<int> ali3;
+
 	ali.push_back(0);
 	ali.push_back(1);
 	ali.push_back(2);

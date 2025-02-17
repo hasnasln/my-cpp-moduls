@@ -39,13 +39,12 @@ int Span::shortestSpan()
 		throw HaveOneValue();
 	std::sort(data.begin(), data.end());
 	std::vector<int>::iterator it;
-	for(it = data.begin(); it++ != data.end(); it++)
+	for(it = data.begin(); it != (data.end() - 1); it++)
 	{
-		if (*it - *(it++) < tmp )
-			tmp = *it - *(it++);
-		std::cout << *it << std::endl;
+		if (tmp > *(it + 1) - *it)
+			tmp = (*(it + 1)) - *it;
 	}
-	return *it;
+	return tmp;
 }
 
 int Span::longestSpan()
@@ -55,10 +54,7 @@ int Span::longestSpan()
 	if (_N == 1)
 		throw HaveOneValue();
 	std::sort(data.begin(), data.end());
-	std::vector<int>::iterator it;
-	for(it = data.begin(); it != data.end(); it++)
-		std::cout << *it << std::endl;
-	return *it;
+	return *(data.end() - 1) - *(data.begin());
 }
 
 
