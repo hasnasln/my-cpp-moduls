@@ -10,8 +10,8 @@ This repository contains my solutions to École 42's C++ curriculum. The program
 ---
 ## 📜 Module Overview
 
-| Module | Topics | Key Concepts | Status |
-|--------|--------|--------------|--------|
+| Module | Topics | Key Concepts |
+|--------|--------|--------------|
 | **[00](cpp_00/)** | Basics | `namespace`, `class`, `iostream`, initialization lists|
 | **[01](cpp_01/)** | Memory | Pointers, references, memory allocation|
 | **[02](cpp_02/)** | Operators | Overloading, Orthodox Canonical Form|
