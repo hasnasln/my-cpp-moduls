@@ -1,5 +1,5 @@
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef Fixed_HPP
+# define Fixed_HPP
 
 #include <iostream>
 
@@ -7,21 +7,23 @@ class Fixed
 {
 	public:
 		Fixed(void);
-		~Fixed();
 		Fixed(const Fixed& other);
 		Fixed& operator=(const Fixed& other);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-		// ex01
-		Fixed(const int number);
-		Fixed(const float number);
-		float toFloat(void) const;
-		int toInt(void) const;
+		~Fixed(void);
+
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+		/*--ex01--*/
+		Fixed(const int num);
+		Fixed(const float num);
+		float	toFloat(void)	const;
+		int		toInt(void)	const;
+
 	private:
-		int					_x; // sabit noktalı sayı değerini depolamak için
-		static const int	_y = 8; // kesirli bitlerin sayısını depolamak için her zaman 8 olacaktır
+		int	_x;
+		static const int _y = 8;
 };
 
-std::ostream& operator<<(std::ostream &os, Fixed const &a);
+std::ostream& operator<<(std::ostream &os, Fixed const &num);
 
 #endif

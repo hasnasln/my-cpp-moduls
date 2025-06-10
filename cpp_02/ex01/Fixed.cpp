@@ -1,62 +1,62 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed(): _x(0)
+Fixed::Fixed(void): _x(0)
 {
-	std::cout << "Default constructor called" << std::endl;
-}
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl; 
 }
 Fixed::Fixed(const Fixed& other): _x(other.getRawBits())
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl; 
 }
-Fixed& Fixed::operator=(const Fixed& other)
+Fixed&	Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy assignment operato called" << std::endl;
-	if (this != &other)
-	{
+	std::cout << "Copy assignment operator calle" << std::endl; 
+	if(this != &other)
 		this->setRawBits(other.getRawBits());
-	}
-	return (*this);
+	return(*this);
 }
 
-int Fixed::getRawBits( void ) const
+Fixed::~Fixed(void)
 {
+	std::cout << "Destructor called" << std::endl; 
+}
+
+int		Fixed::getRawBits(void) const
+{
+	std::cout << "getRawBits member function called" << std::endl; 
 	return (_x);
 }
-
-void Fixed::setRawBits( int const raw )
+void	Fixed::setRawBits(int const raw)
 {
+	std::cout << "" << std::endl; 
 	_x = raw;
 }
-/*----------------------Ex01------------------------*/
 
+/*----ex01------*/
 
-Fixed::Fixed(const int number)
+Fixed::Fixed(const int num)
 {
-	std::cout << "Int constructor called" << std::endl;
-	this->setRawBits(number << Fixed::_y);
+	this->setRawBits(num * (1 << _y));
 }
-Fixed::Fixed(const float number)
+
+Fixed::Fixed(const float num)
 {
-	std::cout << "Float constructor called" << std::endl;
-	if (number >= 0.0f)
-		this->setRawBits((number * (1 << _y)) + 0.5f);
+	if(num > 0.0f)
+		this->setRawBits(num * (1 << _y) + 0.5f);
 	else
-		this->setRawBits((number * (1 << _y)) - 0.5f);
+		this->setRawBits(num * (1 << _y) - 0.5f);
 }
 float Fixed::toFloat(void) const
 {
-	return ((float)(this->getRawBits()) / (float)(1 << _y));
+	return (float(_x) / float(1 << _y));
 }
-int Fixed::toInt(void) const
+int	Fixed::toInt(void) const
 {
-	return(this->getRawBits() / (1 << _y));
+	return(_x / (1 << _y));
 }
-std::ostream& operator<<(std::ostream &os, Fixed const &a)
+
+std::ostream& operator<<(std::ostream &os, Fixed const &num)
 {
-	os << a.toFloat();
-	return (os);
+	os << num.toFloat();
+	return(os);
 }

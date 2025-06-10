@@ -1,18 +1,23 @@
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef Fixed_HPP
+# define Fixed_HPP
+
+#include <iostream>
 
 class Fixed
 {
 	public:
 		Fixed(void);
+		Fixed(const Fixed& other);
+		Fixed& operator=(const Fixed& other);
 		~Fixed(void);
-		Fixed(const Fixed& other);		// copy constructure
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
 
 	private:
-		int					_x;			// sabit noktalı sayı değerini depolamak için
-		static const int	_y = 8;		// kesirli bitlerin sayısını depolamak için her zaman 8 olacaktır
+		int	_x;
+		static const int _y = 8;
 };
+
 
 #endif

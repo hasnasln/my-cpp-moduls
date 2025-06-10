@@ -1,5 +1,5 @@
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 #include <iostream>
 
@@ -7,45 +7,44 @@ class Fixed
 {
 	public:
 		Fixed(void);
-		~Fixed();
 		Fixed(const Fixed& other);
-		Fixed& operator=(const Fixed& other);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-		// ex01
-		Fixed(const int number);
-		Fixed(const float number);
-		float toFloat(void) const;
-		int toInt(void) const;
-		// ex02
-		Fixed operator+(const Fixed& other);
-		Fixed operator-(const Fixed& other);
-		Fixed operator*(const Fixed& other);
-		Fixed operator/(const Fixed& other);
-		
-		Fixed operator++(void);
-		Fixed operator--(void);
-		Fixed operator++(int);
-		Fixed operator--(int);
-		
-		bool operator>(const Fixed& a) const;
-		bool operator<(const Fixed& a) const;
-		bool operator<=(const Fixed& a) const;
-		bool operator>=(const Fixed& a) const;
-		bool operator==(const Fixed& a) const;
-		bool operator!=(const Fixed& a) const;
+		Fixed &operator=(const Fixed& other);
+		~Fixed(void);
 
-		static Fixed &min(Fixed &a, Fixed &b);
-		static Fixed const &min(Fixed const &a, Fixed const &b);
-		static Fixed &max(Fixed &a, Fixed &b);
-		static Fixed const &max(Fixed const &a, Fixed const &b);
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+		/*--ex01--*/
+		Fixed(const int num);
+		Fixed(const float num);
+		float	toFloat(void)	const;
+		int		toInt(void)	const;
+		/*--ex02--*/
+		bool	operator>(const Fixed& other) const;
+		bool	operator<(const Fixed& other) const;
+		bool	operator>=(const Fixed& other) const;
+		bool	operator<=(const Fixed& other) const;
+		bool	operator==(const Fixed& other) const;
+		bool	operator!=(const Fixed& other) const;
 
+		Fixed	operator+(const Fixed& other);
+		Fixed	operator-(const Fixed& other);
+		Fixed	operator*(const Fixed& other);
+		Fixed	operator/(const Fixed& other);
+
+		Fixed	operator++();
+		Fixed	operator--();
+		Fixed	operator++(int);
+		Fixed	operator--(int);
+		static Fixed& min(Fixed &num1, Fixed &num2);
+		static Fixed& max(Fixed &num1, Fixed &num2);
+		static const Fixed& min(Fixed const &num1, Fixed const &num2);
+		static const Fixed& max(Fixed const &num1, Fixed const &num2);
 
 	private:
-		int					_x; // sabit noktalı sayı değerini depolamak için
-		static const int	_y = 8; // kesirli bitlerin sayısını depolamak için her zaman 8 olacaktır
+		int	_x;
+		static const int _y = 8;
 };
 
-std::ostream& operator<<(std::ostream &os, Fixed const &a);
+std::ostream& operator<<(std::ostream &os, Fixed const &num);
 
 #endif
